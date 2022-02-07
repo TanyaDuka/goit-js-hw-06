@@ -8,10 +8,10 @@ const createBtn = document.querySelector('[data-create]');
 const clearBtn = document.querySelector('[data-destroy]');
 const boxes = document.querySelector('#boxes');
 
-const createBox = (value) => {
+const createBoxes = (amount) => {
   boxes.innerHTML = '';
   const arr = [];
-  for (let i = 0; i < value; i += 1){
+  for (let i = 0; i < amount; i += 1){
     const element = `<div style='background-color:${getRandomHexColor()}; width:${30 + 10 * i}px; height:${30 + 10 * i}px;'></div>`;
     arr.push(element);
   }
@@ -20,8 +20,10 @@ const createBox = (value) => {
   boxes.insertAdjacentHTML("afterbegin", arrStr);
 }
 
+const destroyBoxes = () => {
+  boxes.innerHTML = '';
+}
 
 
-
-createBtn.addEventListener('click', ()=>createBox(Number(input.value)));
-clearBtn.addEventListener('click', () => boxes.innerHTML = '');
+createBtn.addEventListener('click', ()=>createBoxes(Number(input.value)));
+clearBtn.addEventListener('click', destroyBoxes);
